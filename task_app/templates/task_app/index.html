@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>Task Management App</title>
+</head>
+<body>
+	<div class="container">
+        <div class="row justify-content-center">
+	        <div class="col-8">
+	          <h2 class="mt-2">Task management app</h2>	
+	          <hr class="mt-0 mb-4">         
+				{% block content %}	
+					{% if user.is_authenticated %}						
+						<a href="{% url 'logout' %}">Logout</a>	
+										
+						{% else %}						
+						<a href="{% url 'login_url' %}">Login</a>							
+					{% endif %}
+				{% endblock %}
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
