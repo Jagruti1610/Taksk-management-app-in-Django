@@ -14,6 +14,7 @@
 			        <th>End Time</th>
 			        <th>Details</th>
 			        <th>Status</th>
+			        <th>Update</th>
 			    </tr>
 			</thead>
 		    {% for item in tasks %}
@@ -24,6 +25,7 @@
 				        <td>{{ item.task_end_time }}</td>
 				        <td>{{ item.details }}</td>
 				        <td>{{ item.status }}</td>
+				        <td><a href="/task/{{ item.id }}/update_task">Update</a></td>
 				    </tr>
 				</tbody>
 		    {% endfor %}

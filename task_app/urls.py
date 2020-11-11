@@ -10,4 +10,6 @@ urlpatterns = [
 	path('register/', tasks.registerView, name='register_url'),
 	path('logout/', LogoutView.as_view(), name='logout'),
 	path('create_task/', tasks.CreateTaskView.as_view(), name="create_task"),
+	path('<pk>/update_task', tasks.UpdateTaskView.as_view(), name="update_task"),
+	path('<pk>/delete_task', tasks.DeleteTaskView.as_view(), name="delete_task"),
 ]

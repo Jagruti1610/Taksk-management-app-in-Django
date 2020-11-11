@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, UpdateView, FormView
+from django.views.generic import CreateView, ListView, UpdateView, FormView, DeleteView
 from task_app.forms import CreateTaskForm
 from ..models import Task
+from django.urls import reverse_lazy
+
 
 def indexView(request):
 	return render(request, 'task_app/index.html')
@@ -41,3 +43,23 @@ class CreateTaskView(CreateView):
 
     def get_success_url(self):  
     	return reverse("dashboard")	
+
+
+class UpdateTaskView(UpdateView):
+    model = Task
+    fields = [ 
+        "task_end_time", 
+        "details",
+        "status"
+    ] 
+
+    template_name_suffix = 'UpdateForm'  #taskUpdateForm.html
+  
+    # can specify success url 
+    # url to redirect after successfully 
+    # updating details 
+    success_url ="/task/dashboard/"	
+
+class DeleteTaskView(DeleteView):
+    model = Task
+    success_url = reverse_lazy('dashboard')

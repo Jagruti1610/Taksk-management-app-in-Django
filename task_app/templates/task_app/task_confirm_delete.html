@@ -1,0 +1,17 @@
+
+{% extends 'task_app/index.html' %}
+
+{% block content%}
+	{% if user.is_authenticated %}
+	<h4> Delete your tasks here </h4>
+		<form method="post">{% csrf_token %}
+		    <p>Are you sure you want to delete "{{ object }}"?</p>
+		    <input type="submit" value="Confirm">
+		</form>
+	{% else %}
+			<a class="btn btn-primary" href="{% url 'login_url' %}">Login</a>
+			<a class="btn btn-primary" href="{% url 'register_url' %}">Register</a>	
+	{% endif %}
+	
+{% endblock %}
+
